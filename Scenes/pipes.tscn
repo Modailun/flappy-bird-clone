@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bg438eyg3tjj"]
+
+[node name="Pipes" type="AnimatableBody2D"]

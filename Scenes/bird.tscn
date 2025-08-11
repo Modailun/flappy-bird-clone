@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8kifyk7hc6nl"]
+
+[ext_resource type="Script" uid="uid://c8k15yvv20pxy" path="res://Scripts/bird.gd" id="1_i8bdw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i8bdw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ygmfd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8bdw"]
+size = Vector2(32, 32)
+
+[node name="Bird" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_i8bdw")
+gravity_scale = 1.5
+script = ExtResource("1_i8bdw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(32, 32)
+texture = SubResource("CanvasTexture_ygmfd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i8bdw")

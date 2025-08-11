@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://bnc5pe1d0vbax"]
+[gd_scene load_steps=3 format=3 uid="uid://bnc5pe1d0vbax"]
+
+[ext_resource type="PackedScene" uid="uid://lba3tqsm6xqc" path="res://Scenes/kill_zone.tscn" id="1_ebmjs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qxrlw"]
 
 [node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+
+[node name="KillZone" parent="." instance=ExtResource("1_ebmjs")]
+position = Vector2(576, 576)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape2D_qxrlw")
+
+[node name="Polygon2D" type="Polygon2D" parent="KillZone"]
+polygon = PackedVector2Array(-640, 0, 640, 0, 640, 128, -640, 128)

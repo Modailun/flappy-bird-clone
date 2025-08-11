@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddl48kj3yorot"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ygci"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3ygci"]
+
+[node name="Pipe" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3ygci")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(48, 896)
+texture = SubResource("CanvasTexture_3ygci")

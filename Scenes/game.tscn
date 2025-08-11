@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnc5pe1d0vbax"]
+[gd_scene load_steps=7 format=3 uid="uid://bnc5pe1d0vbax"]
 
 [ext_resource type="PackedScene" uid="uid://lba3tqsm6xqc" path="res://Scenes/floor.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://b8kifyk7hc6nl" path="res://Scenes/bird.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bg438eyg3tjj" path="res://Scenes/pipes.tscn" id="3_wrm1d"]
+
+[sub_resource type="Animation" id="Animation_wrm1d"]
+resource_name = "Loop"
+length = 15.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 11, 12, 13),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1152, 320), Vector2(-120, 320), Vector2(-120, 1728), Vector2(1320, 1728), Vector2(1320, 320)]
+}
+
+[sub_resource type="Animation" id="Animation_3dryh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1152, 320)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wowpa"]
+_data = {
+&"Loop": SubResource("Animation_wrm1d"),
+&"RESET": SubResource("Animation_3dryh")
+}
 
 [node name="Game" type="Node2D"]
 
@@ -10,9 +48,22 @@
 [node name="Bird" parent="." instance=ExtResource("2_qxrlw")]
 position = Vector2(128, 288)
 
-[node name="Floor" parent="." instance=ExtResource("1_ebmjs")]
+[node name="Limits" type="Node" parent="."]
+
+[node name="Floor" parent="Limits" instance=ExtResource("1_ebmjs")]
 position = Vector2(576, 608)
 
-[node name="Floor2" parent="." instance=ExtResource("1_ebmjs")]
+[node name="Floor2" parent="Limits" instance=ExtResource("1_ebmjs")]
 position = Vector2(576, 32)
-rotation = 3.14159
+rotation = -3.14159
+
+[node name="EveryPipes" type="Node" parent="."]
+
+[node name="Pipes" parent="EveryPipes" instance=ExtResource("3_wrm1d")]
+position = Vector2(1152, 320)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EveryPipes/Pipes"]
+libraries = {
+&"": SubResource("AnimationLibrary_wowpa")
+}
+autoplay = "Loop"

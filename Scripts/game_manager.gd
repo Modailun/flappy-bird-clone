@@ -1,6 +1,11 @@
 extends Node
 
+var max_pipes : int = 5
+var created_pipes : int = 0
+var pipes_scene : Resource = preload("res://scenes/pipes.tscn")
+
 @onready var animation_player: AnimationPlayer = $"../EveryPipes/Pipes/AnimationPlayer"
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	print("game manager ready")
@@ -12,11 +17,24 @@ func _ready() -> void:
 	#animation.length = 10.0
 	#animation.loop_mode = Animation.LOOP_LINEAR
 	#animation_player.play("Loop")
-	for i in range(5):  # Crée 5 objets
-		var objet = preload("res://scenes/pipes.tscn").instantiate()
-		objet.global_position.y = randf_range(160, 480)
-		objet.global_position.x = 1200
-		add_child(objet)
+	create_pipes()
+	
 
 func _process(delta: float) -> void:
 	pass
+
+func create_pipes():
+	if created_pipes < max_pipes:
+		print("pipe created")
+		var pipes = pipes_scene.instantiate()
+		var tween = create_tween()
+		pipes.global_position.y = randf_range(160, 480)
+		pipes.global_position.x = 1200
+		add_child(pipes)
+		tween.set_loops()
+		tween.tween_property(pipes, "position",Vector2(-50, pipes.global_position.y), 10)
+		created_pipes += 1
+		timer.start()
+
+func _on_timer_timeout() -> void:
+	create_pipes()

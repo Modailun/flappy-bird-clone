@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnc5pe1d0vbax"]
+[gd_scene load_steps=4 format=3 uid="uid://bnc5pe1d0vbax"]
 
-[ext_resource type="Script" uid="uid://5iv02lg1cxw0" path="res://Scripts/game_manager.gd" id="1_3dryh"]
-[ext_resource type="PackedScene" uid="uid://lba3tqsm6xqc" path="res://Scenes/floor.tscn" id="1_ebmjs"]
-[ext_resource type="PackedScene" uid="uid://b8kifyk7hc6nl" path="res://Scenes/bird.tscn" id="2_qxrlw"]
-[ext_resource type="PackedScene" uid="uid://bg438eyg3tjj" path="res://Scenes/pipes.tscn" id="3_wrm1d"]
+[ext_resource type="Script" uid="uid://5iv02lg1cxw0" path="res://scripts/game_manager.gd" id="1_3dryh"]
+[ext_resource type="PackedScene" uid="uid://lba3tqsm6xqc" path="res://scenes/floor.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://b8kifyk7hc6nl" path="res://scenes/bird.tscn" id="2_qxrlw"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,7 +10,7 @@
 script = ExtResource("1_3dryh")
 
 [node name="Bird" parent="." instance=ExtResource("2_qxrlw")]
-position = Vector2(128, 288)
+position = Vector2(256, 296)
 
 [node name="Limits" type="Node" parent="."]
 
@@ -21,15 +20,3 @@ position = Vector2(576, 608)
 [node name="Floor2" parent="Limits" instance=ExtResource("1_ebmjs")]
 position = Vector2(576, 32)
 rotation = -3.14159
-
-[node name="EveryPipes" type="Node" parent="."]
-
-[node name="Pipes" parent="EveryPipes" instance=ExtResource("3_wrm1d")]
-
-[node name="Pipes2" parent="EveryPipes" instance=ExtResource("3_wrm1d")]
-
-[node name="Pipes3" parent="EveryPipes" instance=ExtResource("3_wrm1d")]
-
-[node name="Pipes4" parent="EveryPipes" instance=ExtResource("3_wrm1d")]
-
-[node name="Pipes5" parent="EveryPipes" instance=ExtResource("3_wrm1d")]

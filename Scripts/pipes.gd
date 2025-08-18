@@ -26,8 +26,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if score:
-		++points
-		print("score = ", points)
+		print("Point")
+		MainMenu.add_score()
 		score = false
 
 func _on_point_body_entered(body: Node2D) -> void:

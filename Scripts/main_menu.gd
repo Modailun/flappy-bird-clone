@@ -1,5 +1,10 @@
 extends MarginContainer
 
+var score : int = 0
 
 func _on_start_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+
+func add_score():
+	++score
+	print("Score :",score)
